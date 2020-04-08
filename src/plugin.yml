@@ -1,0 +1,18 @@
+name: UltimateDonors
+version: 0.0.6
+main: me.Stefan923.UltimateDonors.UltimateDonors
+description: Provides an useful set of commands and donors utilities.
+authors: [Stefan923]
+
+commands:
+  ultimatedonors:
+    description: Infos about this plugin.
+    aliases: [corelite, supercore, supercorelite, score, scorelite]
+
+permissions:
+  ultimatedonors.admin:
+    description: Access to powerfull commands, like /core reload.
+    default: op
+  ultimatedonors.use.emojis:
+    description: Access to use emojis.
+    default: op
