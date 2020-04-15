@@ -33,6 +33,7 @@ public class SettingsManager {
         config.addDefault("Chat.Emotes.<3", "§c❤");
         config.addDefault("Chat.Emotes.o/", "( ﾟ◡ﾟ)/");
         config.addDefault("Chat.Emotes.:totem:", "⦿_⦿");
+        config.addDefault("Enabled Commands.Emotes", true);
         config.addDefault("Join Quit Messages.Enable Join Message", true);
         config.addDefault("Join Quit Messages.Enable Quit Message", true);
         config.addDefault("Join Quit Messages.Group Permissions", Arrays.asList("ultimatedonors.jqmessages.vip", "ultimatedonors.jqmessages.mvp"));
@@ -56,6 +57,7 @@ public class SettingsManager {
         config.set("Chat.Emojis.<3", "§c❤");
         config.set("Chat.Emojis.o/", "( ﾟ◡ﾟ)/");
         config.set("Chat.Emojis.:totem:", "⦿_⦿");
+        config.set("Enabled Commands.Emotes", true);
         config.set("Join Quit Messages.Enable Join Message", true);
         config.set("Join Quit Messages.Enable Quit Message", true);
         config.set("Join Quit Messages.Group Permissions", Arrays.asList("ultimatedonors.jqmessages.vip", "ultimatedonors.jqmessages.mvp"));

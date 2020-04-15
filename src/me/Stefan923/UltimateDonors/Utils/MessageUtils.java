@@ -1,6 +1,7 @@
 package me.Stefan923.UltimateDonors.Utils;
 
 import me.Stefan923.SuperCore.API.SuperCoreAPI;
+import me.Stefan923.SuperCore.API.UserAPI;
 import me.Stefan923.UltimateDonors.UltimateDonors;
 import me.clip.placeholderapi.PlaceholderAPI;
 import org.bukkit.Bukkit;
@@ -189,7 +190,10 @@ public interface MessageUtils {
     default String prepareMessageByLang(Player player, String option) {
         UltimateDonors instance = UltimateDonors.getInstance();
         if (Bukkit.getPluginManager().getPlugin("SuperCore") != null) {
-            String language = SuperCoreAPI.getInstance().getUser(player.getName()).getLanguage();
+            UserAPI userAPI = SuperCoreAPI.getInstance().getUser(player.getName());
+            String language = userAPI.getLanguage();
+            if (language == null)
+                return "";
             if (instance.getLanguageManagers().containsKey(language))
                 return prepareMessage(player, instance.getLanguageManager(language).getConfig().getString(option));
         }
@@ -200,6 +204,8 @@ public interface MessageUtils {
         UltimateDonors instance = UltimateDonors.getInstance();
         if (Bukkit.getPluginManager().getPlugin("SuperCore") != null) {
             String language = SuperCoreAPI.getInstance().getUser(player.getName()).getLanguage();
+            if (language == null)
+                return "";
             if (instance.getLanguageManagers().containsKey(language))
                 return prepareMessage(player, instance.getLanguageManager(language).getConfig().getStringList(option));
         }

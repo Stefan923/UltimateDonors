@@ -57,9 +57,9 @@ public class UltimateDonors extends JavaPlugin implements MessageUtils, VersionU
     }
 
     private Integer enableListeners() {
-        Integer i = 3;
+        Integer i = 4;
         PluginManager pluginManager = getServer().getPluginManager();
-        pluginManager.registerEvents(new PlayerJoinListener(), this);
+        pluginManager.registerEvents(new PlayerJoinListener(this), this);
         pluginManager.registerEvents(new PlayerQuitListener(), this);
         pluginManager.registerEvents(new AsyncPlayerChatListener(), this);
         return i;

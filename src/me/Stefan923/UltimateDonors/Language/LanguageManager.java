@@ -42,6 +42,11 @@ public class LanguageManager implements MessageUtils {
 
         config = YamlConfiguration.loadConfiguration(cfile);
         config.options().header("UltimateDonors by Stefan923.\n");
+        config.addDefault("Commands.Emotes.Format", "&8(&3!&8) &fThe list of emotes for which you have permissions: &b%list%");
+        config.addDefault("Commands.Emotes.List Symbol", " \n&b ● &f");
+        config.addDefault("Commands.Emotes.List Separator", "&7 - &f");
+        config.addDefault("General.Invalid Command Syntax", "&8(&3!&8) &cInvalid Syntax or you have no permission!\n&8(&3!&8) &fThe valid syntax is: &b%syntax%");
+        config.addDefault("General.No Permission", "&8(&3!&8) &cYou need the &4%permission% &cpermission to do that!");
         for (String permission : settings.getStringList("Join Quit Messages.Group Permissions")) {
             String[] options = permission.split("\\.");
             if (options.length >= 1) {
@@ -63,10 +68,13 @@ public class LanguageManager implements MessageUtils {
     public void reset(UltimateDonors p) {
         FileConfiguration settings = p.getSettingsManager().getConfig();
 
+        config.set("Commands.Emotes", "&8(&3!&8) &fThe list of emotes for which you have permissions: &b%list%");
         for (String permission : settings.getStringList("Join Quit Messages.Group Permissions")) {
-            String[] options = permission.split(".");
-            config.set("Join Message." + options[options.length - 1], "&8(&3!&8) &a%playername% &fjoined the game!");
-            config.set("Quit Message." + options[options.length - 1], "&8(&3!&8) &a%playername% &fleft the game!");
+            String[] options = permission.split("\\.");
+            if (options.length >= 1) {
+                config.set("Join Message." + options[options.length - 1], "&8(&3!&8) &a%playername% &fjoined the game!");
+                config.set("Quit Message." + options[options.length - 1], "&8(&3!&8) &a%playername% &fleft the game!");
+            }
         }
         config.set("Update Checker.Available", "&8(&3!&8) &fThere is a new version of &bUltimateDonors &favailable!\n&8(&3!&8) &fDownload link: &b%link%");
         config.set("Update Checker.Not Available", "&8(&3!&8) &fThere's no update available for &bUltimateDonors&f.");

@@ -1,6 +1,7 @@
 package me.Stefan923.UltimateDonors.Commands;
 
 import me.Stefan923.UltimateDonors.Commands.Exceptions.MissingPermissionException;
+import me.Stefan923.UltimateDonors.Commands.Type.CommandEmotes;
 import me.Stefan923.UltimateDonors.Commands.Type.CommandReload;
 import me.Stefan923.UltimateDonors.Commands.Type.CommandUltimateDonors;
 import me.Stefan923.UltimateDonors.UltimateDonors;
@@ -31,6 +32,10 @@ public class CommandManager implements CommandExecutor, MessageUtils {
 
         AbstractCommand commandUltimateDonors = addCommand(new CommandUltimateDonors());
 
+        if (settings.getBoolean("Enabled Commands.Emotes")) {
+            plugin.getCommand("emotes").setExecutor(this);
+            addCommand(new CommandEmotes());
+        }
         addCommand(new CommandReload(commandUltimateDonors));
 
         for (AbstractCommand abstractCommand : commands) {

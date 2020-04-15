@@ -6,12 +6,13 @@ import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerQuitEvent;
 
 public class PlayerQuitListener implements Listener, MessageUtils {
 
-    @EventHandler
+    @EventHandler (priority = EventPriority.HIGH)
     public void onPlayerOuit(PlayerQuitEvent event) {
         Player player = event.getPlayer();
         String playerName = player.getName();
